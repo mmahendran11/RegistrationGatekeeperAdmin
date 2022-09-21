@@ -197,6 +197,14 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Admin\Credentials.aspx" />
+    <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Admin\ManageCernerPosition.aspx" />
+    <Content Include="Views\Admin\ManageConfig.aspx" />
+    <Content Include="Views\Admin\ManageGateKeeperStatus.aspx" />
+    <Content Include="Views\Admin\ManageNursingAncillaryCredential.aspx" />
+    <Content Include="Views\Admin\ManageOrganizations.aspx" />
+    <Content Include="Views\Admin\ManageSystemAccess.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -227,6 +235,18 @@
       <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\GateKeeperStatu.cs">
+      <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Log.cs">
+      <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LogGatekeeper.cs">
+      <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LogUpdateType.cs">
+      <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LogUserInformation.cs">
       <DependentUpon>MHCC_RegistrationPortalEntites.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\MHCC_ADEntites.Context.cs">
@@ -301,6 +321,62 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Credentials.aspx.cs">
+      <DependentUpon>Credentials.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Credentials.aspx.designer.cs">
+      <DependentUpon>Credentials.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageCernerPosition.aspx.cs">
+      <DependentUpon>ManageCernerPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageCernerPosition.aspx.designer.cs">
+      <DependentUpon>ManageCernerPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageConfig.aspx.cs">
+      <DependentUpon>ManageConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageConfig.aspx.designer.cs">
+      <DependentUpon>ManageConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageGateKeeperStatus.aspx.cs">
+      <DependentUpon>ManageGateKeeperStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageGateKeeperStatus.aspx.designer.cs">
+      <DependentUpon>ManageGateKeeperStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageNursingAncillaryCredential.aspx.cs">
+      <DependentUpon>ManageNursingAncillaryCredential.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageNursingAncillaryCredential.aspx.designer.cs">
+      <DependentUpon>ManageNursingAncillaryCredential.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageOrganizations.aspx.cs">
+      <DependentUpon>ManageOrganizations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageOrganizations.aspx.designer.cs">
+      <DependentUpon>ManageOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageSystemAccess.aspx.cs">
+      <DependentUpon>ManageSystemAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ManageSystemAccess.aspx.designer.cs">
+      <DependentUpon>ManageSystemAccess.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

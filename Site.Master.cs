@@ -15,18 +15,31 @@ namespace RegistrationGatekeeperAdmin
         protected void Page_Load(object sender, EventArgs e)
         {
             lblName.Text = _user.DisplayName;
+            string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+            string strURL = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "");
+            string strAppPath = HttpContext.Current.Request.ApplicationPath.ToString();
+
+            bool developers = HttpContext.Current.User.IsInRole(MyRoles.WebDevelopers);
+            //bool overAllAdmins = HttpContext.Current.User.IsInRole(MyRoles.OverallAdmin);
+
+            if (strAppPath == "/")
+            {
+                strAppPath = string.Empty;
+            }
+
+            lblName.Text = _user.DisplayName;
 
             //Get admin tab
-            if (HttpContext.Current.User.IsInRole(MyRoles.WebDevelopers) || HttpContext.Current.User.IsInRole(MyRoles.Gatekeepers) || HttpContext.Current.User.IsInRole(MyRoles.ACG))
+            if (developers)
             {
                 HtmlGenericControl _li = new HtmlGenericControl("li");
                 HtmlGenericControl anchor = new HtmlGenericControl("a");
-                anchor.Attributes.Add("href", "WhoIs.aspx");
-                anchor.InnerText = "Access";
+
+                anchor.Attributes.Add("href", strURL + strAppPath + "/Views/Admin/Index.aspx");
+                anchor.InnerText = "Admin";
                 _li.Controls.Add(anchor);
                 phMenu.Controls.Add(_li);
             }
-
         }
     }
 }
