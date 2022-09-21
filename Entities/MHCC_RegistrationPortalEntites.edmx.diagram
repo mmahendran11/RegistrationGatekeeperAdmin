@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="55cb9652625a4f34830c268185db4e30" Name="Diagram1">
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.CernerPosition" Width="2" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Config" Width="2.125" PointX="13.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Credential" Width="1.5" PointX="5.875" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.GateKeeperStatu" Width="3.25" PointX="12" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.NursingAncillaryCredential" Width="2.25" PointX="6.125" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Organization" Width="1.5" PointX="6.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Registration" Width="2.375" PointX="2.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Relationship" Width="1.875" PointX="10.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.SystemAccess" Width="1.5" PointX="11.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.SystemIdentity" Width="1.5" PointX="9.5" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_CernerPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_Credentials" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_GateKeeperStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_NursingAncillaryCredential" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_Organizations" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_SystemIdentitys_Organizations" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Registration_Relationship" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_SystemIdentitys_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_SystemIdentitys_SystemAccess" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.Log" Width="1.75" PointX="4" PointY="11.5" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.LogGatekeeper" Width="1.75" PointX="9.5" PointY="11.375" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_LogGatekeeper_CernerPosition" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_LogGatekeeper_GateKeeperStatus" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Log_Registration" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_LogGatekeeper_Log" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.LogUserInformation" Width="2" PointX="6.625" PointY="12.5" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_LogUserInformation_Log" />
+        <EntityTypeShape EntityType="MHCC_RegistrationModel.LogUpdateType" Width="1.875" PointX="1" PointY="11.875" />
+        <AssociationConnector Association="MHCC_RegistrationModel.FK_Log_LogUpdateType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

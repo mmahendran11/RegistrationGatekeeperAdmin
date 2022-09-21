@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MHCC_RegistrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CernerPosition">
+          <Key>
+            <PropertyRef Name="CernerPositionId" />
+          </Key>
+          <Property Name="CernerPositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CernerPositionName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmTransferChoice" Type="bit" />
+        </EntityType>
+        <EntityType Name="Credentials">
+          <Key>
+            <PropertyRef Name="CredentialId" />
+          </Key>
+          <Property Name="CredentialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredentialName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GateKeeperStatus">
+          <Key>
+            <PropertyRef Name="GateKeeperStatusId" />
+          </Key>
+          <Property Name="GateKeeperStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GateKeeperStatusName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetime" Nullable="false" />
+          <Property Name="LogUpdateTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogGatekeeper">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="GatekeeperStatusId" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="250" />
+          <Property Name="CernerPositionId" Type="int" />
+        </EntityType>
+        <EntityType Name="LogUpdateType">
+          <Key>
+            <PropertyRef Name="LogUpdateTypeId" />
+          </Key>
+          <Property Name="LogUpdateTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogUpdateTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogUserInformation">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="ValuesChanged" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NursingAncillaryCredential">
+          <Key>
+            <PropertyRef Name="NursingAncillaryCredentialId" />
+          </Key>
+          <Property Name="NursingAncillaryCredentialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Certification" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="OrganizationAbbreviation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="OrganizationAbbreviation" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationshipId" Type="int" Nullable="false" />
+          <Property Name="RelationshipName" Type="nvarchar" MaxLength="150" />
+          <Property Name="HREmployeeId" Type="nvarchar" MaxLength="150" />
+          <Property Name="HREmployeeEmail" Type="nvarchar" MaxLength="250" />
+          <Property Name="HRSupervisor" Type="nvarchar" MaxLength="150" />
+          <Property Name="HRCompany" Type="nvarchar" MaxLength="250" />
+          <Property Name="HRDepartment" Type="nvarchar" MaxLength="150" />
+          <Property Name="HRJobTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProviderNPI" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProviderCredentialsId" Type="int" />
+          <Property Name="ProviderCredentialsName" Type="nvarchar" MaxLength="250" />
+          <Property Name="TitleExternal" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyExternal" Type="nvarchar" MaxLength="250" />
+          <Property Name="CityExternal" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactNameExternal" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContactPhoneExternal" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatekeeperStatusId" Type="int" />
+          <Property Name="GatekeeperStatusName" Type="nvarchar" MaxLength="250" />
+          <Property Name="GatekeeperValidatedDate" Type="datetime" />
+          <Property Name="GatekeeperUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatekeeperDisplayName" Type="nvarchar" MaxLength="150" />
+          <Property Name="GatekeeperNote" Type="nvarchar" MaxLength="250" />
+          <Property Name="CernerPositionId" Type="int" />
+          <Property Name="CernerPositionName" Type="nvarchar" MaxLength="150" />
+          <Property Name="VerifiedUserId" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProviderSpecialty" Type="nvarchar" MaxLength="150" />
+          <Property Name="NursingAncillaryCredentialId" Type="int" />
+          <Property Name="NursingAncillaryCertification" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipId" />
+          </Key>
+          <Property Name="RelationshipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RelationshipName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="FlowType" Type="int" Nullable="false" />
+          <Property Name="RelationshipDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SystemAccess">
+          <Key>
+            <PropertyRef Name="SystemAccessId" />
+          </Key>
+          <Property Name="SystemAccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SystemAccessName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemIdentitys">
+          <Key>
+            <PropertyRef Name="SystemIdentityId" />
+          </Key>
+          <Property Name="SystemIdentityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="SystemAccessId" Type="int" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Log_LogUpdateType">
+          <End Role="LogUpdateType" Type="Self.LogUpdateType" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogUpdateType">
+              <PropertyRef Name="LogUpdateTypeId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogUpdateTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Registration">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogGatekeeper_CernerPosition">
+          <End Role="CernerPosition" Type="Self.CernerPosition" Multiplicity="0..1" />
+          <End Role="LogGatekeeper" Type="Self.LogGatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CernerPosition">
+              <PropertyRef Name="CernerPositionId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="CernerPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogGatekeeper_GateKeeperStatus">
+          <End Role="GateKeeperStatus" Type="Self.GateKeeperStatus" Multiplicity="0..1" />
+          <End Role="LogGatekeeper" Type="Self.LogGatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateKeeperStatus">
+              <PropertyRef Name="GateKeeperStatusId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="GatekeeperStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogGatekeeper_Log">
+          <End Role="Log" Type="Self.Log" Multiplicity="1" />
+          <End Role="LogGatekeeper" Type="Self.LogGatekeeper" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogUserInformation_Log">
+          <End Role="Log" Type="Self.Log" Multiplicity="1" />
+          <End Role="LogUserInformation" Type="Self.LogUserInformation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogUserInformation">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CernerPosition">
+          <End Role="CernerPosition" Type="Self.CernerPosition" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CernerPosition">
+              <PropertyRef Name="CernerPositionId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="CernerPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Credentials">
+          <End Role="Credentials" Type="Self.Credentials" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credentials">
+              <PropertyRef Name="CredentialId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="ProviderCredentialsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_GateKeeperStatus">
+          <End Role="GateKeeperStatus" Type="Self.GateKeeperStatus" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateKeeperStatus">
+              <PropertyRef Name="GateKeeperStatusId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="GatekeeperStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_NursingAncillaryCredential">
+          <End Role="NursingAncillaryCredential" Type="Self.NursingAncillaryCredential" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NursingAncillaryCredential">
+              <PropertyRef Name="NursingAncillaryCredentialId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="NursingAncillaryCredentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Relationship">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="RelationshipId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="RelationshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_Registration">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_SystemAccess">
+          <End Role="SystemAccess" Type="Self.SystemAccess" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemAccess">
+              <PropertyRef Name="SystemAccessId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="SystemAccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MHCC_RegistrationModelStoreContainer">
+          <EntitySet Name="CernerPosition" EntityType="Self.CernerPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credentials" EntityType="Self.Credentials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GateKeeperStatus" EntityType="Self.GateKeeperStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogGatekeeper" EntityType="Self.LogGatekeeper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogUpdateType" EntityType="Self.LogUpdateType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogUserInformation" EntityType="Self.LogUserInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NursingAncillaryCredential" EntityType="Self.NursingAncillaryCredential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relationship" EntityType="Self.Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemAccess" EntityType="Self.SystemAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemIdentitys" EntityType="Self.SystemIdentitys" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Log_LogUpdateType" Association="Self.FK_Log_LogUpdateType">
+            <End Role="LogUpdateType" EntitySet="LogUpdateType" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Registration" Association="Self.FK_Log_Registration">
+            <End Role="Registration" EntitySet="Registration" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogGatekeeper_CernerPosition" Association="Self.FK_LogGatekeeper_CernerPosition">
+            <End Role="CernerPosition" EntitySet="CernerPosition" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeeper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogGatekeeper_GateKeeperStatus" Association="Self.FK_LogGatekeeper_GateKeeperStatus">
+            <End Role="GateKeeperStatus" EntitySet="GateKeeperStatus" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeeper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogGatekeeper_Log" Association="Self.FK_LogGatekeeper_Log">
+            <End Role="Log" EntitySet="Log" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeeper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogUserInformation_Log" Association="Self.FK_LogUserInformation_Log">
+            <End Role="Log" EntitySet="Log" />
+            <End Role="LogUserInformation" EntitySet="LogUserInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CernerPosition" Association="Self.FK_Registration_CernerPosition">
+            <End Role="CernerPosition" EntitySet="CernerPosition" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Credentials" Association="Self.FK_Registration_Credentials">
+            <End Role="Credentials" EntitySet="Credentials" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_GateKeeperStatus" Association="Self.FK_Registration_GateKeeperStatus">
+            <End Role="GateKeeperStatus" EntitySet="GateKeeperStatus" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_NursingAncillaryCredential" Association="Self.FK_Registration_NursingAncillaryCredential">
+            <End Role="NursingAncillaryCredential" EntitySet="NursingAncillaryCredential" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Organizations" Association="Self.FK_Registration_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Relationship" Association="Self.FK_Registration_Relationship">
+            <End Role="Relationship" EntitySet="Relationship" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_Organizations" Association="Self.FK_SystemIdentitys_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_Registration" Association="Self.FK_SystemIdentitys_Registration">
+            <End Role="Registration" EntitySet="Registration" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_SystemAccess" Association="Self.FK_SystemIdentitys_SystemAccess">
+            <End Role="SystemAccess" EntitySet="SystemAccess" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MHCC_RegistrationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CernerPosition">
+          <Key>
+            <PropertyRef Name="CernerPositionId" />
+          </Key>
+          <Property Name="CernerPositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CernerPositionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_CernerPosition" FromRole="CernerPosition" ToRole="Registration" />
+          <NavigationProperty Name="LogGatekeepers" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_CernerPosition" FromRole="CernerPosition" ToRole="LogGatekeeper" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmTransferChoice" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="CredentialId" />
+          </Key>
+          <Property Name="CredentialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredentialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Credentials" FromRole="Credentials" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="GateKeeperStatu">
+          <Key>
+            <PropertyRef Name="GateKeeperStatusId" />
+          </Key>
+          <Property Name="GateKeeperStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GateKeeperStatusName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_GateKeeperStatus" FromRole="GateKeeperStatus" ToRole="Registration" />
+          <NavigationProperty Name="LogGatekeepers" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_GateKeeperStatus" FromRole="GateKeeperStatu" ToRole="LogGatekeeper" />
+        </EntityType>
+        <EntityType Name="NursingAncillaryCredential">
+          <Key>
+            <PropertyRef Name="NursingAncillaryCredentialId" />
+          </Key>
+          <Property Name="NursingAncillaryCredentialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Certification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_NursingAncillaryCredential" FromRole="NursingAncillaryCredential" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrganizationAbbreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Organizations" FromRole="Organizations" ToRole="Registration" />
+          <NavigationProperty Name="SystemIdentitys" Relationship="Self.FK_SystemIdentitys_Organizations" FromRole="Organizations" ToRole="SystemIdentitys" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationAbbreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationshipId" Type="Int32" Nullable="false" />
+          <Property Name="RelationshipName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HREmployeeId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HREmployeeEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HRSupervisor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HRCompany" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HRDepartment" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HRJobTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderNPI" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderCredentialsId" Type="Int32" />
+          <Property Name="ProviderCredentialsName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TitleExternal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyExternal" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CityExternal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNameExternal" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhoneExternal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatekeeperStatusId" Type="Int32" />
+          <Property Name="GatekeeperStatusName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GatekeeperValidatedDate" Type="DateTime" Precision="3" />
+          <Property Name="GatekeeperUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatekeeperDisplayName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="GatekeeperNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CernerPositionId" Type="Int32" />
+          <Property Name="CernerPositionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="VerifiedUserId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderSpecialty" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NursingAncillaryCredentialId" Type="Int32" />
+          <Property Name="NursingAncillaryCertification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CernerPosition" Relationship="Self.FK_Registration_CernerPosition" FromRole="Registration" ToRole="CernerPosition" />
+          <NavigationProperty Name="Credential" Relationship="Self.FK_Registration_Credentials" FromRole="Registration" ToRole="Credentials" />
+          <NavigationProperty Name="GateKeeperStatu" Relationship="Self.FK_Registration_GateKeeperStatus" FromRole="Registration" ToRole="GateKeeperStatus" />
+          <NavigationProperty Name="NursingAncillaryCredential" Relationship="Self.FK_Registration_NursingAncillaryCredential" FromRole="Registration" ToRole="NursingAncillaryCredential" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Registration_Organizations" FromRole="Registration" ToRole="Organizations" />
+          <NavigationProperty Name="Relationship" Relationship="Self.FK_Registration_Relationship" FromRole="Registration" ToRole="Relationship" />
+          <NavigationProperty Name="SystemIdentitys" Relationship="Self.FK_SystemIdentitys_Registration" FromRole="Registration" ToRole="SystemIdentitys" />
+          <NavigationProperty Name="Logs" Relationship="MHCC_RegistrationModel.FK_Log_Registration" FromRole="Registration" ToRole="Log" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="RelationshipId" />
+          </Key>
+          <Property Name="RelationshipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RelationshipName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="FlowType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Relationship" FromRole="Relationship" ToRole="Registration" />
+          <Property Name="RelationshipDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemAccess">
+          <Key>
+            <PropertyRef Name="SystemAccessId" />
+          </Key>
+          <Property Name="SystemAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SystemAccessName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SystemIdentitys" Relationship="Self.FK_SystemIdentitys_SystemAccess" FromRole="SystemAccess" ToRole="SystemIdentitys" />
+        </EntityType>
+        <EntityType Name="SystemIdentity">
+          <Key>
+            <PropertyRef Name="SystemIdentityId" />
+          </Key>
+          <Property Name="SystemIdentityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="SystemAccessId" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_SystemIdentitys_Organizations" FromRole="SystemIdentitys" ToRole="Organizations" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK_SystemIdentitys_Registration" FromRole="SystemIdentitys" ToRole="Registration" />
+          <NavigationProperty Name="SystemAccess" Relationship="Self.FK_SystemIdentitys_SystemAccess" FromRole="SystemIdentitys" ToRole="SystemAccess" />
+        </EntityType>
+        <Association Name="FK_Registration_CernerPosition">
+          <End Role="CernerPosition" Type="Self.CernerPosition" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CernerPosition">
+              <PropertyRef Name="CernerPositionId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="CernerPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Credentials">
+          <End Role="Credentials" Type="Self.Credential" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credentials">
+              <PropertyRef Name="CredentialId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="ProviderCredentialsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_GateKeeperStatus">
+          <End Role="GateKeeperStatus" Type="Self.GateKeeperStatu" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateKeeperStatus">
+              <PropertyRef Name="GateKeeperStatusId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="GatekeeperStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_NursingAncillaryCredential">
+          <End Role="NursingAncillaryCredential" Type="Self.NursingAncillaryCredential" Multiplicity="0..1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NursingAncillaryCredential">
+              <PropertyRef Name="NursingAncillaryCredentialId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="NursingAncillaryCredentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Organizations">
+          <End Role="Organizations" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_Organizations">
+          <End Role="Organizations" Type="Self.Organization" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Relationship">
+          <End Role="Relationship" Type="Self.Relationship" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relationship">
+              <PropertyRef Name="RelationshipId" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="RelationshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_Registration">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemIdentitys_SystemAccess">
+          <End Role="SystemAccess" Type="Self.SystemAccess" Multiplicity="1" />
+          <End Role="SystemIdentitys" Type="Self.SystemIdentity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemAccess">
+              <PropertyRef Name="SystemAccessId" />
+            </Principal>
+            <Dependent Role="SystemIdentitys">
+              <PropertyRef Name="SystemAccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MHCC_RegistrationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CernerPositions" EntityType="Self.CernerPosition" />
+          <EntitySet Name="Configs" EntityType="Self.Config" />
+          <EntitySet Name="Credentials" EntityType="Self.Credential" />
+          <EntitySet Name="GateKeeperStatus" EntityType="Self.GateKeeperStatu" />
+          <EntitySet Name="NursingAncillaryCredentials" EntityType="Self.NursingAncillaryCredential" />
+          <EntitySet Name="Organizations" EntityType="Self.Organization" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="Relationships" EntityType="Self.Relationship" />
+          <EntitySet Name="SystemAccesses" EntityType="Self.SystemAccess" />
+          <EntitySet Name="SystemIdentitys" EntityType="Self.SystemIdentity" />
+          <AssociationSet Name="FK_Registration_CernerPosition" Association="Self.FK_Registration_CernerPosition">
+            <End Role="CernerPosition" EntitySet="CernerPositions" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Credentials" Association="Self.FK_Registration_Credentials">
+            <End Role="Credentials" EntitySet="Credentials" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_GateKeeperStatus" Association="Self.FK_Registration_GateKeeperStatus">
+            <End Role="GateKeeperStatus" EntitySet="GateKeeperStatus" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_NursingAncillaryCredential" Association="Self.FK_Registration_NursingAncillaryCredential">
+            <End Role="NursingAncillaryCredential" EntitySet="NursingAncillaryCredentials" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Organizations" Association="Self.FK_Registration_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_Organizations" Association="Self.FK_SystemIdentitys_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Relationship" Association="Self.FK_Registration_Relationship">
+            <End Role="Relationship" EntitySet="Relationships" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_Registration" Association="Self.FK_SystemIdentitys_Registration">
+            <End Role="Registration" EntitySet="Registrations" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemIdentitys_SystemAccess" Association="Self.FK_SystemIdentitys_SystemAccess">
+            <End Role="SystemAccess" EntitySet="SystemAccesses" />
+            <End Role="SystemIdentitys" EntitySet="SystemIdentitys" />
+          </AssociationSet>
+          <EntitySet Name="Logs" EntityType="MHCC_RegistrationModel.Log" />
+          <EntitySet Name="LogGatekeepers" EntityType="MHCC_RegistrationModel.LogGatekeeper" />
+          <AssociationSet Name="FK_LogGatekeeper_CernerPosition" Association="MHCC_RegistrationModel.FK_LogGatekeeper_CernerPosition">
+            <End Role="CernerPosition" EntitySet="CernerPositions" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeepers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogGatekeeper_GateKeeperStatus" Association="MHCC_RegistrationModel.FK_LogGatekeeper_GateKeeperStatus">
+            <End Role="GateKeeperStatu" EntitySet="GateKeeperStatus" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeepers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Registration" Association="MHCC_RegistrationModel.FK_Log_Registration">
+            <End Role="Registration" EntitySet="Registrations" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogGatekeeper_Log" Association="MHCC_RegistrationModel.FK_LogGatekeeper_Log">
+            <End Role="Log" EntitySet="Logs" />
+            <End Role="LogGatekeeper" EntitySet="LogGatekeepers" />
+          </AssociationSet>
+          <EntitySet Name="LogUserInformations" EntityType="MHCC_RegistrationModel.LogUserInformation" />
+          <AssociationSet Name="FK_LogUserInformation_Log" Association="MHCC_RegistrationModel.FK_LogUserInformation_Log">
+            <End Role="Log" EntitySet="Logs" />
+            <End Role="LogUserInformation" EntitySet="LogUserInformations" />
+          </AssociationSet>
+          <EntitySet Name="LogUpdateTypes" EntityType="MHCC_RegistrationModel.LogUpdateType" />
+          <AssociationSet Name="FK_Log_LogUpdateType" Association="MHCC_RegistrationModel.FK_Log_LogUpdateType">
+            <End Role="LogUpdateType" EntitySet="LogUpdateTypes" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogUpdateTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Registration" Relationship="MHCC_RegistrationModel.FK_Log_Registration" FromRole="Log" ToRole="Registration" />
+          <NavigationProperty Name="LogGatekeeper" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_Log" FromRole="Log" ToRole="LogGatekeeper" />
+          <NavigationProperty Name="LogUserInformation" Relationship="MHCC_RegistrationModel.FK_LogUserInformation_Log" FromRole="Log" ToRole="LogUserInformation" />
+          <NavigationProperty Name="LogUpdateType" Relationship="MHCC_RegistrationModel.FK_Log_LogUpdateType" FromRole="Log" ToRole="LogUpdateType" />
+        </EntityType>
+        <EntityType Name="LogGatekeeper">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="GatekeeperStatusId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CernerPositionId" Type="Int32" />
+          <NavigationProperty Name="CernerPosition" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_CernerPosition" FromRole="LogGatekeeper" ToRole="CernerPosition" />
+          <NavigationProperty Name="GateKeeperStatu" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_GateKeeperStatus" FromRole="LogGatekeeper" ToRole="GateKeeperStatu" />
+          <NavigationProperty Name="Log" Relationship="MHCC_RegistrationModel.FK_LogGatekeeper_Log" FromRole="LogGatekeeper" ToRole="Log" />
+        </EntityType>
+        <Association Name="FK_LogGatekeeper_CernerPosition">
+          <End Type="MHCC_RegistrationModel.CernerPosition" Role="CernerPosition" Multiplicity="0..1" />
+          <End Type="MHCC_RegistrationModel.LogGatekeeper" Role="LogGatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CernerPosition">
+              <PropertyRef Name="CernerPositionId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="CernerPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogGatekeeper_GateKeeperStatus">
+          <End Type="MHCC_RegistrationModel.GateKeeperStatu" Role="GateKeeperStatu" Multiplicity="0..1" />
+          <End Type="MHCC_RegistrationModel.LogGatekeeper" Role="LogGatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateKeeperStatu">
+              <PropertyRef Name="GateKeeperStatusId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="GatekeeperStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Registration">
+          <End Type="MHCC_RegistrationModel.Registration" Role="Registration" Multiplicity="1" />
+          <End Type="MHCC_RegistrationModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registration">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogGatekeeper_Log">
+          <End Type="MHCC_RegistrationModel.Log" Role="Log" Multiplicity="1" />
+          <End Type="MHCC_RegistrationModel.LogGatekeeper" Role="LogGatekeeper" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogGatekeeper">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogUserInformation">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="ValuesChanged" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Log" Relationship="MHCC_RegistrationModel.FK_LogUserInformation_Log" FromRole="LogUserInformation" ToRole="Log" />
+        </EntityType>
+        <Association Name="FK_LogUserInformation_Log">
+          <End Type="MHCC_RegistrationModel.Log" Role="Log" Multiplicity="1" />
+          <End Type="MHCC_RegistrationModel.LogUserInformation" Role="LogUserInformation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogUserInformation">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogUpdateType">
+          <Key>
+            <PropertyRef Name="LogUpdateTypeId" />
+          </Key>
+          <Property Name="LogUpdateTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogUpdateTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Logs" Relationship="MHCC_RegistrationModel.FK_Log_LogUpdateType" FromRole="LogUpdateType" ToRole="Log" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Log_LogUpdateType">
+          <End Type="MHCC_RegistrationModel.LogUpdateType" Role="LogUpdateType" Multiplicity="1" />
+          <End Type="MHCC_RegistrationModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogUpdateType">
+              <PropertyRef Name="LogUpdateTypeId" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LogUpdateTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MHCC_RegistrationModelStoreContainer" CdmEntityContainer="MHCC_RegistrationEntities">
+          <EntitySetMapping Name="CernerPositions">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.CernerPosition">
+              <MappingFragment StoreEntitySet="CernerPosition">
+                <ScalarProperty Name="CernerPositionId" ColumnName="CernerPositionId" />
+                <ScalarProperty Name="CernerPositionName" ColumnName="CernerPositionName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ConfirmTransferChoice" ColumnName="ConfirmTransferChoice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credentials">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Credential">
+              <MappingFragment StoreEntitySet="Credentials">
+                <ScalarProperty Name="CredentialId" ColumnName="CredentialId" />
+                <ScalarProperty Name="CredentialName" ColumnName="CredentialName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GateKeeperStatus">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.GateKeeperStatu">
+              <MappingFragment StoreEntitySet="GateKeeperStatus">
+                <ScalarProperty Name="GateKeeperStatusId" ColumnName="GateKeeperStatusId" />
+                <ScalarProperty Name="GateKeeperStatusName" ColumnName="GateKeeperStatusName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NursingAncillaryCredentials">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.NursingAncillaryCredential">
+              <MappingFragment StoreEntitySet="NursingAncillaryCredential">
+                <ScalarProperty Name="NursingAncillaryCredentialId" ColumnName="NursingAncillaryCredentialId" />
+                <ScalarProperty Name="CertificationCode" ColumnName="CertificationCode" />
+                <ScalarProperty Name="Certification" ColumnName="Certification" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Organization">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="OrganizationAbbreviation" ColumnName="OrganizationAbbreviation" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="OrganizationAbbreviation" ColumnName="OrganizationAbbreviation" />
+                <ScalarProperty Name="RelationshipId" ColumnName="RelationshipId" />
+                <ScalarProperty Name="RelationshipName" ColumnName="RelationshipName" />
+                <ScalarProperty Name="HREmployeeId" ColumnName="HREmployeeId" />
+                <ScalarProperty Name="HREmployeeEmail" ColumnName="HREmployeeEmail" />
+                <ScalarProperty Name="HRSupervisor" ColumnName="HRSupervisor" />
+                <ScalarProperty Name="HRCompany" ColumnName="HRCompany" />
+                <ScalarProperty Name="HRDepartment" ColumnName="HRDepartment" />
+                <ScalarProperty Name="HRJobTitle" ColumnName="HRJobTitle" />
+                <ScalarProperty Name="ProviderNPI" ColumnName="ProviderNPI" />
+                <ScalarProperty Name="ProviderCredentialsId" ColumnName="ProviderCredentialsId" />
+                <ScalarProperty Name="ProviderCredentialsName" ColumnName="ProviderCredentialsName" />
+                <ScalarProperty Name="TitleExternal" ColumnName="TitleExternal" />
+                <ScalarProperty Name="CompanyExternal" ColumnName="CompanyExternal" />
+                <ScalarProperty Name="CityExternal" ColumnName="CityExternal" />
+                <ScalarProperty Name="ContactNameExternal" ColumnName="ContactNameExternal" />
+                <ScalarProperty Name="ContactPhoneExternal" ColumnName="ContactPhoneExternal" />
+                <ScalarProperty Name="GatekeeperStatusId" ColumnName="GatekeeperStatusId" />
+                <ScalarProperty Name="GatekeeperStatusName" ColumnName="GatekeeperStatusName" />
+                <ScalarProperty Name="GatekeeperValidatedDate" ColumnName="GatekeeperValidatedDate" />
+                <ScalarProperty Name="GatekeeperUserId" ColumnName="GatekeeperUserId" />
+                <ScalarProperty Name="GatekeeperDisplayName" ColumnName="GatekeeperDisplayName" />
+                <ScalarProperty Name="GatekeeperNote" ColumnName="GatekeeperNote" />
+                <ScalarProperty Name="CernerPositionId" ColumnName="CernerPositionId" />
+                <ScalarProperty Name="CernerPositionName" ColumnName="CernerPositionName" />
+                <ScalarProperty Name="VerifiedUserId" ColumnName="VerifiedUserId" />
+                <ScalarProperty Name="ProviderSpecialty" ColumnName="ProviderSpecialty" />
+                <ScalarProperty Name="NursingAncillaryCredentialId" ColumnName="NursingAncillaryCredentialId" />
+                <ScalarProperty Name="NursingAncillaryCertification" ColumnName="NursingAncillaryCertification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relationships">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Relationship">
+              <MappingFragment StoreEntitySet="Relationship">
+                <ScalarProperty Name="RelationshipDescription" ColumnName="RelationshipDescription" />
+                <ScalarProperty Name="RelationshipId" ColumnName="RelationshipId" />
+                <ScalarProperty Name="RelationshipName" ColumnName="RelationshipName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="FlowType" ColumnName="FlowType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemAccesses">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.SystemAccess">
+              <MappingFragment StoreEntitySet="SystemAccess">
+                <ScalarProperty Name="SystemAccessId" ColumnName="SystemAccessId" />
+                <ScalarProperty Name="SystemAccessName" ColumnName="SystemAccessName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemIdentitys">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.SystemIdentity">
+              <MappingFragment StoreEntitySet="SystemIdentitys">
+                <ScalarProperty Name="SystemIdentityId" ColumnName="SystemIdentityId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="SystemAccessId" ColumnName="SystemAccessId" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="LogUpdateTypeId" ColumnName="LogUpdateTypeId" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogGatekeepers">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.LogGatekeeper">
+              <MappingFragment StoreEntitySet="LogGatekeeper">
+                <ScalarProperty Name="CernerPositionId" ColumnName="CernerPositionId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="GatekeeperStatusId" ColumnName="GatekeeperStatusId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogUserInformations">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.LogUserInformation">
+              <MappingFragment StoreEntitySet="LogUserInformation">
+                <ScalarProperty Name="ValuesChanged" ColumnName="ValuesChanged" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogUpdateTypes">
+            <EntityTypeMapping TypeName="MHCC_RegistrationModel.LogUpdateType">
+              <MappingFragment StoreEntitySet="LogUpdateType">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LogUpdateTypeName" ColumnName="LogUpdateTypeName" />
+                <ScalarProperty Name="LogUpdateTypeId" ColumnName="LogUpdateTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
